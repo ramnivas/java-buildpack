@@ -33,4 +33,15 @@ describe JavaBuildpack::Release do
     }.to_yaml)
   end
 
+  it 'should include specified options' do
+    payload = JavaBuildpack::Release.new('spec/fixtures/java_options').run
+    expect(payload).to eq({
+                              'addons' => [],
+                              'config_vars' => {},
+                              'default_process_types' => {
+                                  'web' => '.java/bin/java -cp . com.gopivotal.SimpleJava -Xss128k'
+                              }
+                          }.to_yaml)
+  end
+
 end
