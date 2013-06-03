@@ -18,20 +18,7 @@ require 'tmpdir'
 
 describe JavaBuildpack::ApplicationCache do
 
-  before do
-    @previous_value = ARGV[1]
-    ARGV[1] = nil
-  end
-
-  after do
-    ARGV[1] = @previous_value
-  end
-
-  it 'should raise an error if ARGV[1] is not defined' do
-    lambda { JavaBuildpack::ApplicationCache.new }.should raise_error
-  end
-
-  it 'should use ARGV[1] directory' do
+  it 'should use the specified application cache directory' do
     stub_request(:get, 'http://foo-uri/').to_return(
         :status => 200,
         :body => 'foo-cached',
@@ -42,9 +29,7 @@ describe JavaBuildpack::ApplicationCache do
     )
 
     Dir.mktmpdir do |root|
-      ARGV[1] = root
-
-      JavaBuildpack::ApplicationCache.new().get('foo', 'http://foo-uri/') {}
+      JavaBuildpack::ApplicationCache.new(root).get('foo', 'http://foo-uri/') {}
 
       expect(File.exists?(File.join(root, 'foo.cached'))).to be_true
     end

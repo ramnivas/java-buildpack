@@ -23,12 +23,10 @@ module JavaBuildpack
   # <b>WARNING: This cache should only by used by code run by the +compile+ script</b>
   class ApplicationCache < DownloadCache
 
-    # Creates an instance that is configured to use the application cache.  The application cache location is defined by
-    # the second argument (<tt>ARGV[1]</tt>) to the +compile+ script.
+    # Creates an instance that is configured to use the application cache.
     #
-    # @raise if the second argument (<tt>ARGV[1]</tt>) to the +compile+ script is +nil+
-    def initialize
-      application_cache_directory = ARGV[1]
+    # @raise if the application cache directory parameter is +nil+
+    def initialize(application_cache_directory)
       raise 'Application cache directory is undefined' if application_cache_directory.nil?
       super(application_cache_directory)
     end
