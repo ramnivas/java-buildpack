@@ -16,4 +16,5 @@
 # Configuration for the Play JPA Plugin framework
 ---
 version: 0.+
-repository_root: "{default.repository.root}/play-jpa-plugin"
+#repository_root: "{default.repository.root}/play-jpa-plugin"
+repository_root: "http://ramnivas-buildpack.cfapps.io/play-jpa-plugin"

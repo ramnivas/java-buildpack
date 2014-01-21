@@ -18,4 +18,5 @@
 # avoid conflicts.
 ---
 version: 0.+
-repository_root: "{default.repository.root}/auto-reconfiguration"
+#repository_root: "{default.repository.root}/auto-reconfiguration"
+repository_root: "http://ramnivas-buildpack.cfapps.io/auto-reconfiguration"
